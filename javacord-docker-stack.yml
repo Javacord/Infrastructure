@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  shields:
+    image: shields
+
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
+    env_file: /home/teamcity/shields.env
+
+    environment:
+      # Base URL for redirects etc.
+      BASE_URL: "http://localhost:8080"
+      # Where your homepage is, if different
+      FRONTEND_REDIRECT_URL: "https://javacord.org/"
+
+      # Server settings
+      PORT: 80
+      BIND_ADDRESS: "::"
+
+      # GitHub settings
+      GITHUB_URL: "https://api.github.com"
+
+    networks:
+      - shields
+
+    ports:
+      - "8080:80"
+
+  javadoc_proxy:
+    image: javadoc_proxy
+
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
+    networks:
+      - javadoc_proxy
+
+    ports:
+      - "8081:80"
+
+networks:
+  shields:
+  javadoc_proxy:
