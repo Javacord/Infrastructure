@@ -1,0 +1,16 @@
+FROM circleci/openjdk:9-jdk-browsers
+
+USER root
+
+RUN usermod -u 1001 circleci && \
+    groupmod -g 1001 circleci && \
+    find / -not -path '/proc/*' -user 3434 -exec chown -h 1001 {} \; && \
+    find / -not -path '/proc/*' -group 3434 -exec chgrp -h 1001 {} \; && \
+    groupadd teamcity && \
+    usermod -d /home/teamcity -m -g teamcity -l teamcity circleci && \
+    usermod -g 1001 teamcity && \
+    sed -i 's/circleci:x:1001:/teamcity:x:1001:/' /etc/group && \
+    sed -i 's/teamcity:x:1002://' /etc/group && \
+    find / -not -path '/proc/*' -group 1002 -exec chgrp -h 1001 {} \;
+
+USER teamcity
