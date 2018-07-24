@@ -1,16 +1,28 @@
-FROM circleci/openjdk:9-jdk-browsers
+FROM debian:stable-slim
 
-USER root
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends lsb-release && \
+    echo "deb http://deb.debian.org/debian $(lsb_release -cs)-backports main" \
+        >>/etc/apt/sources.list.d/backports.list && \
+    apt-get update && \
+    mkdir /usr/share/man/man1 && \
+    apt-get install -y --no-install-recommends openjdk-9-jdk-headless && \
+    rm -v /etc/apt/sources.list.d/backports.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        git \
+        gpg \
+        openssh-client && \
+    apt-get purge -y lsb-release && \
+    apt-get autoremove --purge -y && \
+    rm -rv /var/lib/apt/lists/*
 
-RUN usermod -u 1001 circleci && \
-    groupmod -g 1001 circleci && \
-    find / -not -path '/proc/*' -user 3434 -exec chown -h 1001 {} \; && \
-    find / -not -path '/proc/*' -group 3434 -exec chgrp -h 1001 {} \; && \
-    groupadd teamcity && \
-    usermod -d /home/teamcity -m -g teamcity -l teamcity circleci && \
-    usermod -g 1001 teamcity && \
-    sed -i 's/circleci:x:1001:/teamcity:x:1001:/' /etc/group && \
-    sed -i 's/teamcity:x:1002://' /etc/group && \
-    find / -not -path '/proc/*' -group 1002 -exec chgrp -h 1001 {} \;
+# Add user with same uid and gid as build agent for easier file sharing
+RUN groupadd -g 1001 teamcity && \
+    useradd --no-log-init --shell /bin/false --create-home -g teamcity -u 1001 teamcity
 
 USER teamcity
+
+# Add github.com to known hosts file
+RUN ssh -o StrictHostKeyChecking=no -o RequestTTY=no git@github.com || true
