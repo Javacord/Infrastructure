@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 
 services:
   shields:
@@ -46,6 +46,31 @@ services:
     ports:
       - "8081:80"
 
+  gradle-build-cache:
+    image: gradle/build-cache-node
+
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
+    volumes:
+      - gradle-build-cache-data:/data
+
+    networks:
+      - gradle-build-cache
+
+    # if the web interface of the cache node is needed
+    #ports:
+    #  - "5071:5071"
+
 networks:
   shields:
   javadoc_proxy:
+  gradle-build-cache:
+    # allow the building containers to attach to the network
+    attachable: true
+
+volumes:
+  gradle-build-cache-data:

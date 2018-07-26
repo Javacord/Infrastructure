@@ -22,6 +22,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 RUN groupadd -g 1001 teamcity && \
     useradd --no-log-init --shell /bin/false --create-home -g teamcity -u 1001 teamcity
 
+# Add Gradle init script to a volume that overlays the home-dir mount to be added later
+COPY --chown=teamcity:teamcity build-cache.gradle /home/teamcity/.gradle/init.d/
+VOLUME /home/teamcity/.gradle/init.d/
+
 USER teamcity
 
 # Add github.com to known hosts file

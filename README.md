@@ -30,12 +30,12 @@ The Javacord stack of servers run in docker containers on the CI server.
 docker stack deploy --prune -c javacord-docker-stack.yml javacord-stack
 ```
 
-### `javacord-build.docker`
+### `javacord-build`
 
 A `Dockerfile` for building the image in which the actual Javacord build is running.
 
 #### Build the image
 
 ```shell
-docker build -t javacord-build - <javacord-build.docker
+docker build -t javacord-build javacord-build/
 ```
