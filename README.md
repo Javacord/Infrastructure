@@ -39,3 +39,15 @@ A `Dockerfile` for building the image in which the actual Javacord build is runn
 ```shell
 docker build -t javacord-build javacord-build/
 ```
+
+### `teamcity-agent`
+
+A `Dockerfile` for building the TeamCity agent images tailored to our needs.
+
+#### Build the images
+
+```shell
+docker build --build-arg i=1 -t teamcity-agent-1 teamcity-agent/ && \
+docker build --build-arg i=2 -t teamcity-agent-2 teamcity-agent/ && \
+docker build --build-arg i=3 -t teamcity-agent-3 teamcity-agent/
+```
