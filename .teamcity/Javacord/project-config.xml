@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="b6b7faf8-e20f-4e5a-b5ed-08a247f867bd" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Javacord</name>
+  <parameters />
+  <project-extensions>
+    <extension id="PROJECT_EXT_3" type="IssueTracker">
+      <parameters>
+        <param name="authType" value="anonymous" />
+        <param name="name" value="Javacord on GitHub" />
+        <param name="pattern" value="#(\d+)" />
+        <param name="repository" value="Javacord/Javacord" />
+        <param name="secure:accessToken" value="" />
+        <param name="secure:password" value="" />
+        <param name="type" value="GithubIssues" />
+        <param name="username" value="" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_4" type="ReportTab">
+      <parameters>
+        <param name="startPage" value="javacord-api/javacord-api-%javacord.version%-javadoc.jar!index.html" />
+        <param name="title" value="JavaDoc (api)" />
+        <param name="type" value="BuildReportTab" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_7" type="project-graphs">
+      <parameters>
+        <param name="format" value="size" />
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "Total Artifacts Size",
+    "sourceBuildTypeId": "Javacord_Build",
+    "key": "ArtifactsSize"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="Total Artifacts Size" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_8" type="project-graphs">
+      <parameters>
+        <param name="format" value="duration" />
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "Build Duration (all stages)",
+    "sourceBuildTypeId": "Javacord_Build",
+    "key": "BuildDuration"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="Build Duration" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_9" type="ReportTab">
+      <parameters>
+        <param name="startPage" value="javacord-core/javacord-core-%javacord.version%-javadoc.jar!index.html" />
+        <param name="title" value="JavaDoc (core)" />
+        <param name="type" value="BuildReportTab" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup />
+  <buildTypesOrder order="Javacord_UpdateCommitStatus,Javacord_PublishSnapshots,Javacord_Release" />
+</project>
+

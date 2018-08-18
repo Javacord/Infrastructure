@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vcs-root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="eb3e7871-54a5-466f-8c17-f91f41ecb5d0" type="jetbrains.git" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Javacord on GitHub</name>
+  <param name="agentCleanFilesPolicy" value="ALL_UNTRACKED" />
+  <param name="agentCleanPolicy" value="ON_BRANCH_CHANGE" />
+  <param name="authMethod" value="TEAMCITY_SSH_KEY" />
+  <param name="branch" value="refs/heads/development" />
+  <param name="ignoreKnownHosts" value="true" />
+  <param name="submoduleCheckout" value="CHECKOUT" />
+  <param name="teamcity:branchSpec" value="%branch.specification%" />
+  <param name="teamcitySshKey" value="javacord_deploy_key" />
+  <param name="url" value="git@github.com:Javacord/Javacord.git" />
+  <param name="useAlternates" value="true" />
+  <param name="usernameStyle" value="EMAIL" />
+</vcs-root>
+

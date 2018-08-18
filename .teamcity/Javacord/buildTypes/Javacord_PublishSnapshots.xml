@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="d91a8fd2-0759-4b07-a326-c364b5ab40bd" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Publish Snapshots</name>
+  <description />
+  <settings ref="Javacord_template_BuildJavacord">
+    <parameters>
+      <param name="additional.docker.parameters" value="--mount type=bind,source=/home/teamcity/signing_secring.gpg,destination=/home/teamcity/signing_secring.gpg,ro" />
+      <param name="additional.gradle.parameters"><![CDATA[--continue
+-P signing.keyId=%signing.keyId%
+-P signing.password=%signing.password%
+-P signing.secretKeyRingFile=%signing.secretKeyRingFile%
+-P sonatype.username=%sonatype.username%
+-P sonatype.password=%sonatype.password%
+-P sonatype.stagingProfileId=%sonatype.stagingProfileId%]]></param>
+      <param name="additional.gradle.tasks" value="publish" />
+      <param name="signing.keyId" value="credentialsJSON:0751b339-7f53-4264-a1c8-1a4b2d0f00dd" spec="password display='hidden' label='Signing Key Id'" />
+      <param name="signing.password" value="credentialsJSON:c7135880-0715-4004-ad52-0a8c0ca2bd28" spec="password display='hidden' label='Signing Password'" />
+      <param name="signing.secretKeyRingFile" value="credentialsJSON:0443b3e7-c187-40ab-b0a4-8eb887eb0406" spec="password display='hidden' label='Signing Secret Key Ring File'" />
+      <param name="sonatype.password" value="credentialsJSON:f07e6276-fc05-4497-b42f-c07cb181c783" spec="password display='hidden' label='Sonatype Password'" />
+      <param name="sonatype.stagingProfileId" value="credentialsJSON:1233c281-2e3b-4627-9f65-37008a3365b6" spec="password display='hidden' label='Staging Profile Id'" />
+      <param name="sonatype.username" value="credentialsJSON:46d4f4a5-82da-4c97-94a9-cfe65446a078" spec="password label='Sonatype Username' display='hidden'" />
+    </parameters>
+    <build-runners />
+    <vcs-settings />
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="enableQueueOptimization" value="true" />
+          <param name="quietPeriodMode" value="USE_DEFAULT" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup>
+      <policy type="builds" cleanup-level="ARTIFACTS">
+        <parameters>
+          <param name="artifactPatterns" value="+:**/*.jar" />
+          <param name="keepBuilds.count" value="2000" />
+        </parameters>
+      </policy>
+    </cleanup>
+  </settings>
+</build-type>
+

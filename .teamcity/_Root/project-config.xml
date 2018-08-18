@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="d6e0ed9c-ab84-40a4-9b4f-9daa9bf5ba69" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>&lt;Root project&gt;</name>
+  <description>Contains all other projects</description>
+  <parameters />
+  <project-extensions>
+    <extension id="PROJECT_EXT_1" type="CloudIntegration">
+      <parameters>
+        <param name="AllowOverride" value="false" />
+        <param name="SubprojectsEnabled" value="true" />
+        <param name="enabled" value="true" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_10" type="CloudImage">
+      <parameters>
+        <param name="agent_pool_id" value="0" />
+        <param name="profileId" value="VRDC-1" />
+        <param name="source-id" value="Javacord_TeamCity_Agent_2" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_11" type="CloudImage">
+      <parameters>
+        <param name="agent_pool_id" value="0" />
+        <param name="profileId" value="VRDC-1" />
+        <param name="source-id" value="Javacord_TeamCity_Agent_3" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_15" type="CloudImage">
+      <parameters>
+        <param name="agent_pool_id" value="0" />
+        <param name="profileId" value="VRDC-1" />
+        <param name="source-id" value="Javacord_TeamCity_Agent_1" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_16" type="versionedSettings">
+      <parameters>
+        <param name="buildSettings" value="ALWAYS_USE_CURRENT" />
+        <param name="credentialsStorageType" value="credentialsJSON" />
+        <param name="enabled" value="true" />
+        <param name="rootId" value="ServerSettingsOnGitHub" />
+        <param name="showChanges" value="false" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_2" type="OAuthProvider">
+      <parameters>
+        <param name="clientId" value="85bbcec7fa7e836ad9bd" />
+        <param name="defaultTokenScope" value="public_repo,repo,repo:status,write:repo_hook" />
+        <param name="displayName" value="GitHub.com" />
+        <param name="gitHubUrl" value="https://github.com/" />
+        <param name="providerType" value="GitHub" />
+        <param name="secure:clientSecret" value="credentialsJSON:e50499fe-d6b3-4a52-8f1e-495cfbcb1e1b" />
+      </parameters>
+    </extension>
+    <extension id="VRDC-1" type="CloudProfile">
+      <parameters>
+        <param name="agentPushPreset" value="" />
+        <param name="cloud-code" value="VRDC" />
+        <param name="description" value="" />
+        <param name="enabled" value="true" />
+        <param name="name" value="Local Docker Agents" />
+        <param name="next-hour" value="" />
+        <param name="profileId" value="VRDC-1" />
+        <param name="profileServerUrl" value="" />
+        <param name="run.var.teamcity.docker.cloud.client_uuid" value="2d0de2bd-d8dd-41b4-8ab8-51a0e1696db7" />
+        <param name="run.var.teamcity.docker.cloud.daemon_info" value="" />
+        <param name="run.var.teamcity.docker.cloud.img_param" value="[{&quot;Administration&quot;:{&quot;Version&quot;:4,&quot;RmOnExit&quot;:true,&quot;PullOnCreate&quot;:false,&quot;MaxInstanceCount&quot;:1,&quot;UseOfficialTCAgentImage&quot;:false,&quot;Profile&quot;:&quot;Javacord_TeamCity_Agent_2&quot;},&quot;Container&quot;:{&quot;Env&quot;:[&quot;BUILD_AGENT_NUMBER=2&quot;],&quot;Image&quot;:&quot;teamcity-agent-2&quot;,&quot;HostConfig&quot;:{&quot;Binds&quot;:[&quot;/var/run/docker.sock:/var/run/docker.sock:rw&quot;,&quot;/opt/buildagent2:/opt/buildagent2:rw&quot;],&quot;OomKillDisable&quot;:false,&quot;Privileged&quot;:false}},&quot;Editor&quot;:{&quot;Binds&quot;:[{&quot;PathOnHost&quot;:&quot;/var/run/docker.sock&quot;,&quot;PathInContainer&quot;:&quot;/var/run/docker.sock&quot;,&quot;ReadOnly&quot;:&quot;rw&quot;},{&quot;PathOnHost&quot;:&quot;/opt/buildagent2&quot;,&quot;PathInContainer&quot;:&quot;/opt/buildagent2&quot;,&quot;ReadOnly&quot;:&quot;rw&quot;}],&quot;MemoryUnit&quot;:&quot;bytes&quot;,&quot;MemorySwapUnit&quot;:&quot;bytes&quot;}},{&quot;Administration&quot;:{&quot;Version&quot;:4,&quot;RmOnExit&quot;:true,&quot;PullOnCreate&quot;:false,&quot;MaxInstanceCount&quot;:1,&quot;UseOfficialTCAgentImage&quot;:false,&quot;Profile&quot;:&quot;Javacord_TeamCity_Agent_3&quot;},&quot;Container&quot;:{&quot;Env&quot;:[&quot;BUILD_AGENT_NUMBER=3&quot;],&quot;Image&quot;:&quot;teamcity-agent-3&quot;,&quot;HostConfig&quot;:{&quot;Binds&quot;:[&quot;/var/run/docker.sock:/var/run/docker.sock:rw&quot;,&quot;/opt/buildagent3:/opt/buildagent3:rw&quot;],&quot;OomKillDisable&quot;:false,&quot;Privileged&quot;:false}},&quot;Editor&quot;:{&quot;Binds&quot;:[{&quot;PathOnHost&quot;:&quot;/var/run/docker.sock&quot;,&quot;PathInContainer&quot;:&quot;/var/run/docker.sock&quot;,&quot;ReadOnly&quot;:&quot;rw&quot;},{&quot;PathOnHost&quot;:&quot;/opt/buildagent3&quot;,&quot;PathInContainer&quot;:&quot;/opt/buildagent3&quot;,&quot;ReadOnly&quot;:&quot;rw&quot;}],&quot;MemoryUnit&quot;:&quot;bytes&quot;,&quot;MemorySwapUnit&quot;:&quot;bytes&quot;}},{&quot;Administration&quot;:{&quot;Version&quot;:4,&quot;RmOnExit&quot;:true,&quot;PullOnCreate&quot;:false,&quot;MaxInstanceCount&quot;:1,&quot;UseOfficialTCAgentImage&quot;:false,&quot;Profile&quot;:&quot;Javacord_TeamCity_Agent_1&quot;},&quot;Container&quot;:{&quot;Env&quot;:[&quot;BUILD_AGENT_NUMBER=1&quot;],&quot;Image&quot;:&quot;teamcity-agent-1&quot;,&quot;HostConfig&quot;:{&quot;Binds&quot;:[&quot;/var/run/docker.sock:/var/run/docker.sock:rw&quot;,&quot;/opt/buildagent1:/opt/buildagent1:rw&quot;],&quot;OomKillDisable&quot;:false,&quot;Privileged&quot;:false}},&quot;Editor&quot;:{&quot;Binds&quot;:[{&quot;PathOnHost&quot;:&quot;/var/run/docker.sock&quot;,&quot;PathInContainer&quot;:&quot;/var/run/docker.sock&quot;,&quot;ReadOnly&quot;:&quot;rw&quot;},{&quot;PathOnHost&quot;:&quot;/opt/buildagent1&quot;,&quot;PathInContainer&quot;:&quot;/opt/buildagent1&quot;,&quot;ReadOnly&quot;:&quot;rw&quot;}],&quot;MemoryUnit&quot;:&quot;bytes&quot;,&quot;MemorySwapUnit&quot;:&quot;bytes&quot;}}]" />
+        <param name="run.var.teamcity.docker.cloud.instance_uri" value="unix:///var/run/docker.sock" />
+        <param name="run.var.teamcity.docker.cloud.server_url" value="" />
+        <param name="run.var.teamcity.docker.cloud.tested_image" value="{" />
+        <param name="run.var.teamcity.docker.cloud.use_default_unix_socket" value="true" />
+        <param name="system.cloud.profile_id" value="VRDC-1" />
+        <param name="terminate-idle-time" value="10" />
+        <param name="total-work-time" value="" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup>
+    <options>
+      <option name="preventDependenciesArtifactsFromCleanup" value="true" />
+    </options>
+  </cleanup>
+</project>
+

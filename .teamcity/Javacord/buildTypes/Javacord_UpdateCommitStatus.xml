@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="f4a07bfb-0ca0-4d27-9941-dabdb3afe211" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Update Commit Status</name>
+  <description />
+  <settings ref="Javacord_template_BuildJavacord">
+    <options>
+      <option name="executionTimeoutMin" value="15" />
+    </options>
+    <parameters>
+      <param name="additional.artifact.patterns" value="-:**/*" />
+      <param name="additional.gradle.parameters" value="--continue" />
+      <param name="branch.specification"><![CDATA[+:refs/heads/*
++:refs/(pull/*/merges)
++:refs/(pull/*)/head]]></param>
+      <param name="teamcity.vcsTrigger.runBuildOnSameRevisionInEveryBranch" value="false" spec="select display='normal' label='Trigger a build for the same revision in every branch' data_2='false' data_1='true'" />
+    </parameters>
+    <build-runners order="RUNNER_10" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers>
+      <build-trigger id="vcsTrigger" type="vcsTrigger">
+        <parameters>
+          <param name="perCheckinTriggering" value="true" />
+          <param name="quietPeriodMode" value="DO_NOT_USE" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_3" type="commit-status-publisher">
+        <parameters>
+          <param name="github_authentication_type" value="token" />
+          <param name="github_host" value="https://api.github.com" />
+          <param name="github_oauth_user" value="BtoBastian" />
+          <param name="publisherId" value="githubStatusPublisher" />
+          <param name="secure:github_access_token" value="credentialsJSON:f414b465-2eaf-4754-969a-9200c5db7fd0" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup>
+      <policy type="days" cleanup-level="ARTIFACTS">
+        <parameters>
+          <param name="artifactPatterns" value="+:**/*.jar" />
+          <param name="keepDays.count" value="7" />
+        </parameters>
+      </policy>
+    </cleanup>
+  </settings>
+</build-type>
+

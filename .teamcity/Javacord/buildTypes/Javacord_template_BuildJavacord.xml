@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="21114a2c-fdc4-41a7-8317-7d1bc274654d" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Build Javacord</name>
+  <settings>
+    <options>
+      <option name="allowPersonalBuildTriggering" value="false" />
+      <option name="artifactRules" value="build/javacord/libs/ =&gt; javacord/&#xA;build/javacord-api/libs/ =&gt; javacord-api/&#xA;build/javacord-core/libs/ =&gt; javacord-core/&#xA;build/javacord-api/reports/ =&gt; javacord-api/reports/&#xA;build/javacord-core/reports/ =&gt; javacord-core/reports/&#xA;%additional.artifact.patterns%" />
+      <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
+      <option name="showDependenciesChanges" value="true" />
+    </options>
+    <parameters>
+      <param name="additional.artifact.patterns" value="" spec="text label='Additional Artifac Patterns' validationMode='any' display='hidden'" />
+      <param name="additional.docker.parameters" value="" spec="text label='Additional Docker Parameters' validationMode='any' display='hidden'" />
+      <param name="additional.gradle.parameters" value="" spec="text display='hidden' label='Additional Gradle Parameters' validationMode='any'" />
+      <param name="additional.gradle.tasks" value="" spec="text description='The tasks to run in the Gradle build additional to &quot;clean&quot; and &quot;build&quot;' label='Additional Gradle Tasks' validationMode='any' display='hidden'" />
+      <param name="branch.specification" value="+:refs/heads/(development)" spec="text label='Branch Specification' validationMode='any' display='hidden'" />
+    </parameters>
+    <build-runners>
+      <runner id="RUNNER_10" name="" type="gradle-runner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="javacord-build" />
+          <param name="plugin.docker.imagePlatform" value="linux" />
+          <param name="plugin.docker.run.parameters"><![CDATA[--mount type=bind,source=/opt/buildagent$BUILD_AGENT_NUMBER-dot-gradle/,destination=/home/teamcity/.gradle/
+--network javacord-stack_gradle-build-cache
+%additional.docker.parameters%]]></param>
+          <param name="teamcity.step.mode" value="default" />
+          <param name="ui.gradleRunner.additional.gradle.cmd.params" value="--info %additional.gradle.parameters%" />
+          <param name="ui.gradleRunner.gradle.tasks.names" value="clean build %additional.gradle.tasks%" />
+          <param name="ui.gradleRunner.gradle.wrapper.useWrapper" value="true" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="Javacord_JavacordOnGitHub" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="swabra" type="swabra">
+        <parameters>
+          <param name="swabra.enabled" value="swabra.after.build" />
+          <param name="swabra.strict" value="true" />
+        </parameters>
+      </extension>
+      <extension id="perfmon" type="perfmon">
+        <parameters />
+      </extension>
+      <extension id="BUILD_EXT_2" type="xml-report-plugin">
+        <parameters>
+          <param name="xmlReportParsing.reportDirs" value="build/*/reports/checkstyle/*.xml" />
+          <param name="xmlReportParsing.reportType" value="checkstyle" />
+          <param name="xmlReportParsing.verboseOutput" value="true" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</template>
+

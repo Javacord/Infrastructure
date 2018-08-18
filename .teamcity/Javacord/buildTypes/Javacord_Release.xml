@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="50f0a1f5-2281-4a4b-9d32-a151bb4df6d2" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Release</name>
+  <description />
+  <settings ref="Javacord_template_BuildJavacord">
+    <parameters>
+      <param name="a.release.version" value="" spec="text description='If empty, the currently checked-in version without snapshot suffix will be used automatically' label='Release Version' validationMode='any' display='prompt'" />
+      <param name="additional.docker.parameters"><![CDATA[--mount type=bind,source=/home/teamcity/signing_secring.gpg,destination=/home/teamcity/signing_secring.gpg,ro
+--mount type=bind,source=/home/teamcity/gpg_signing.sh,destination=/home/teamcity/gpg_signing.sh,ro
+--mount type=bind,source=/home/teamcity/signing_pubring.gpg,destination=/home/teamcity/signing_pubring.gpg,ro
+--mount type=bind,source=/home/teamcity/.gnupg,destination=/home/teamcity/.gnupg
+--mount type=bind,source=/home/teamcity/.gitconfig,destination=/home/teamcity/.gitconfig,ro
+--mount type=bind,source=$SSH_AUTH_SOCK,destination=$SSH_AUTH_SOCK,ro]]></param>
+      <param name="additional.gradle.parameters"><![CDATA[-P release.useAutomaticVersion=true
+-P "release.releaseVersion=%a.release.version%"
+-P "release.newVersion=%b.new.version%"
+-P signing.keyId=%signing.keyId%
+-P signing.password=%signing.password%
+-P signing.secretKeyRingFile=%signing.secretKeyRingFile%
+-P sonatype.username=%sonatype.username%
+-P sonatype.password=%sonatype.password%
+-P sonatype.stagingProfileId=%sonatype.stagingProfileId%
+-P github.token=%github.token%]]></param>
+      <param name="additional.gradle.tasks" value="release" />
+      <param name="b.new.version" value="" spec="text regexp='(.+-SNAPSHOT)?' display='prompt' validationMessage='Sapshot suffix must be specified explicitly' description='If empty, the last version part will be increased automatically' label='New Version' validationMode='regex'" />
+      <param name="github.token" value="credentialsJSON:bb2784cb-7028-4562-a0a0-ab5a99421cd8" spec="password display='hidden' label='GitHub Token'" />
+      <param name="signing.keyId" value="credentialsJSON:0751b339-7f53-4264-a1c8-1a4b2d0f00dd" spec="password display='hidden' label='Signing Key Id'" />
+      <param name="signing.password" value="credentialsJSON:c7135880-0715-4004-ad52-0a8c0ca2bd28" spec="password display='hidden' label='Signing Password'" />
+      <param name="signing.secretKeyRingFile" value="credentialsJSON:0443b3e7-c187-40ab-b0a4-8eb887eb0406" spec="password display='hidden' label='Signing Secret Key Ring File'" />
+      <param name="sonatype.password" value="credentialsJSON:f07e6276-fc05-4497-b42f-c07cb181c783" spec="password display='hidden' label='Sonatype Password'" />
+      <param name="sonatype.stagingProfileId" value="credentialsJSON:1233c281-2e3b-4627-9f65-37008a3365b6" spec="password display='hidden' label='Staging Profile Id'" />
+      <param name="sonatype.username" value="credentialsJSON:46d4f4a5-82da-4c97-94a9-cfe65446a078" spec="password label='Sonatype Username' display='hidden'" />
+    </parameters>
+    <build-runners order="RUNNER_10" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <build-extensions>
+      <extension id="ssh-agent-build-feature" type="ssh-agent-build-feature">
+        <parameters>
+          <param name="teamcitySshKey" value="javacord_deploy_key" />
+        </parameters>
+      </extension>
+    </build-extensions>
+    <cleanup />
+  </settings>
+</build-type>
+
