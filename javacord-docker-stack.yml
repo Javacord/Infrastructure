@@ -65,12 +65,61 @@ services:
     #ports:
     #  - "5071:5071"
 
+  mysql:
+    image: mysql:5.7
+
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_bin", "--binlog-format=MIXED"]
+
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
+    # Uncomment environment and secrets for first start to setup database, then uncomment again
+    #
+    #environment:
+    #  MYSQL_ROOT_PASSWORD_FILE: "/run/secrets/mysql_root_password"
+    #  MYSQL_DATABASE: "teamcity"
+    #  MYSQL_USER: "teamcity"
+    #  MYSQL_PASSWORD_FILE: "/run/secrets/mysql_teamcity_password"
+    #
+    #secrets:
+    #  - source: mysql_root_password
+    #    uid: '999'
+    #    gid: '999'
+    #    mode: 0400
+    #
+    #  - source: mysql_teamcity_password
+    #    uid: '999'
+    #    gid: '999'
+    #    mode: 0400
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    networks:
+      - mysql
+
+    # if the MySQL port is needed from the host
+    ports:
+      - "3306:3306"
+
+#secrets:
+#  mysql_root_password:
+#    external: true
+#
+#  mysql_teamcity_password:
+#    external: true
+
+volumes:
+  gradle-build-cache-data:
+  mysql-data:
+
 networks:
   shields:
   javadoc_proxy:
   gradle-build-cache:
     # allow the building containers to attach to the network
     attachable: true
-
-volumes:
-  gradle-build-cache-data:
+  mysql:

@@ -23,6 +23,8 @@ The Javacord stack of servers run in docker containers on the CI server.
   * `GH_CLIENT_SECRET`
   * `GH_TOKEN`
   * `SHIELDS_IP`
+* `openssl rand -base64 20 | docker secret create mysql_root_password -`
+* `openssl rand -base64 20 | docker secret create mysql_teamcity_password -`
 
 #### Start or update the stack
 
