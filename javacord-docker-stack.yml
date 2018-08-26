@@ -102,8 +102,28 @@ services:
       - mysql
 
     # if the MySQL port is needed from the host
+    #ports:
+    #  - "3306:3306"
+
+  teamcity:
+    image: jetbrains/teamcity-server:2018.1.1
+
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
+    volumes:
+      - teamcity-data:/data/teamcity_server/datadir
+      - teamcity-logs:/opt/teamcity/logs
+      - /run/docker.sock:/run/docker.sock
+
+    networks:
+      - mysql
+
     ports:
-      - "3306:3306"
+      - "8111:8111"
 
 #secrets:
 #  mysql_root_password:
@@ -115,6 +135,8 @@ services:
 volumes:
   gradle-build-cache-data:
   mysql-data:
+  teamcity-data:
+  teamcity-logs:
 
 networks:
   shields:
