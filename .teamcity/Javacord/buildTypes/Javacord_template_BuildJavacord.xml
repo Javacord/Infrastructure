@@ -3,6 +3,7 @@
   <name>Build Javacord</name>
   <settings>
     <options>
+      <option name="allowExternalStatus" value="true" />
       <option name="allowPersonalBuildTriggering" value="false" />
       <option name="artifactRules" value="build/javacord/libs/ =&gt; javacord/&#xA;build/javacord-api/libs/ =&gt; javacord-api/&#xA;build/javacord-core/libs/ =&gt; javacord-core/&#xA;build/javacord-api/reports/ =&gt; javacord-api/reports/&#xA;build/javacord-core/reports/ =&gt; javacord-core/reports/&#xA;%additional.artifact.patterns%" />
       <option name="shouldFailBuildOnAnyErrorMessage" value="true" />
