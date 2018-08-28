@@ -10,6 +10,7 @@
   <param name="teamcitySshKey" value="Deploy Key for Javacord Server Settings" />
   <param name="url" value="git@github.com:Javacord/TeamCity-Configuration.git" />
   <param name="useAlternates" value="true" />
+  <param name="userForTags" value="Javacord CI &lt;ci@javacord.org&gt;" />
   <param name="usernameStyle" value="EMAIL" />
 </vcs-root>
 
