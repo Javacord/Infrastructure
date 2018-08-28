@@ -11,6 +11,7 @@
   <param name="teamcitySshKey" value="javacord_deploy_key" />
   <param name="url" value="git@github.com:Javacord/Javacord.git" />
   <param name="useAlternates" value="true" />
+  <param name="userForTags" value="Javacord CI &lt;ci@javacord.org&gt;" />
   <param name="usernameStyle" value="EMAIL" />
 </vcs-root>
 
