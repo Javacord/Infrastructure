@@ -20,7 +20,7 @@
         <param name="authType" value="anonymous" />
         <param name="name" value="Javacord-Bot on GitHub" />
         <param name="pattern" value="#(\d+)" />
-        <param name="repository" value="https://github.com/Javacord/Javacord-Bot" />
+        <param name="repository" value="Javacord/Javacord-Bot" />
         <param name="secure:accessToken" value="" />
         <param name="secure:password" value="" />
         <param name="type" value="GithubIssues" />
