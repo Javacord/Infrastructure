@@ -15,11 +15,23 @@
         <param name="username" value="" />
       </parameters>
     </extension>
+    <extension id="PROJECT_EXT_5" type="IssueTracker">
+      <parameters>
+        <param name="authType" value="anonymous" />
+        <param name="name" value="Javacord-Bot on GitHub" />
+        <param name="pattern" value="#(\d+)" />
+        <param name="repository" value="https://github.com/Javacord/Javacord-Bot" />
+        <param name="secure:accessToken" value="" />
+        <param name="secure:password" value="" />
+        <param name="type" value="GithubIssues" />
+        <param name="username" value="" />
+      </parameters>
+    </extension>
     <extension id="PROJECT_EXT_7" type="project-graphs">
       <parameters>
-        <param name="defaultFilters" value=""/>
+        <param name="defaultFilters" value="" />
         <param name="format" value="size" />
-        <param name="hideFilters" value=""/>
+        <param name="hideFilters" value="" />
         <param name="series"><![CDATA[[
   {
     "type": "valueType",
@@ -34,9 +46,9 @@
     </extension>
     <extension id="PROJECT_EXT_8" type="project-graphs">
       <parameters>
-        <param name="defaultFilters" value=""/>
+        <param name="defaultFilters" value="" />
         <param name="format" value="duration" />
-        <param name="hideFilters" value=""/>
+        <param name="hideFilters" value="" />
         <param name="series"><![CDATA[[
   {
     "type": "valueType",
