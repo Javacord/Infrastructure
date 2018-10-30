@@ -3,18 +3,6 @@
   <name>Javacord Bot</name>
   <parameters />
   <project-extensions>
-    <extension id="PROJECT_EXT_3" type="IssueTracker">
-      <parameters>
-        <param name="authType" value="anonymous" />
-        <param name="name" value="Javacord-Bot on GitHub" />
-        <param name="pattern" value="#(\d+)" />
-        <param name="repository" value="Javacord/Javacord-Bot" />
-        <param name="secure:accessToken" value="" />
-        <param name="secure:password" value="" />
-        <param name="type" value="GithubIssues" />
-        <param name="username" value="" />
-      </parameters>
-    </extension>
     <extension id="PROJECT_EXT_5" type="IssueTracker">
       <parameters>
         <param name="authType" value="anonymous" />
