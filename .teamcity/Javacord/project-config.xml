@@ -24,12 +24,14 @@
     </extension>
     <extension id="PROJECT_EXT_7" type="project-graphs">
       <parameters>
+        <param name="defaultFilters" value="" />
         <param name="format" value="size" />
+        <param name="hideFilters" value="" />
         <param name="series"><![CDATA[[
   {
     "type": "valueType",
     "title": "Total Artifacts Size",
-    "sourceBuildTypeId": "Javacord_Build",
+    "sourceBuildTypeId": "Javacord_PublishSnapshots",
     "key": "ArtifactsSize"
   }
 ]]]></param>
