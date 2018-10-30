@@ -29,9 +29,8 @@
         <parameters>
           <param name="github_authentication_type" value="token" />
           <param name="github_host" value="https://api.github.com" />
-          <param name="github_oauth_user" value="BtoBastian" />
           <param name="publisherId" value="githubStatusPublisher" />
-          <param name="secure:github_access_token" value="credentialsJSON:f414b465-2eaf-4754-969a-9200c5db7fd0" />
+          <param name="secure:github_access_token" value="credentialsJSON:6a02f2e0-20e0-40dd-9ef7-afbb5fe8c8ea" />
         </parameters>
       </extension>
     </build-extensions>
