@@ -41,12 +41,14 @@
     </extension>
     <extension id="PROJECT_EXT_8" type="project-graphs">
       <parameters>
+        <param name="defaultFilters" value="" />
         <param name="format" value="duration" />
+        <param name="hideFilters" value="" />
         <param name="series"><![CDATA[[
   {
     "type": "valueType",
     "title": "Build Duration (all stages)",
-    "sourceBuildTypeId": "Javacord_Build",
+    "sourceBuildTypeId": "Javacord_PublishSnapshots",
     "key": "BuildDuration"
   }
 ]]]></param>
