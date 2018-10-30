@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
+  <name>Javacord Bot</name>
+  <parameters />
+  <project-extensions>
+    <extension id="PROJECT_EXT_3" type="IssueTracker">
+      <parameters>
+        <param name="authType" value="anonymous" />
+        <param name="name" value="Javacord-Bot on GitHub" />
+        <param name="pattern" value="#(\d+)" />
+        <param name="repository" value="Javacord/Javacord-Bot" />
+        <param name="secure:accessToken" value="" />
+        <param name="secure:password" value="" />
+        <param name="type" value="GithubIssues" />
+        <param name="username" value="" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_7" type="project-graphs">
+      <parameters>
+        <param name="defaultFilters" value=""/>
+        <param name="format" value="size" />
+        <param name="hideFilters" value=""/>
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "Total Artifacts Size",
+    "sourceBuildTypeId": "Javacord_Bot_Publish",
+    "key": "ArtifactsSize"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="Total Artifacts Size" />
+      </parameters>
+    </extension>
+    <extension id="PROJECT_EXT_8" type="project-graphs">
+      <parameters>
+        <param name="defaultFilters" value=""/>
+        <param name="format" value="duration" />
+        <param name="hideFilters" value=""/>
+        <param name="series"><![CDATA[[
+  {
+    "type": "valueType",
+    "title": "Build Duration (all stages)",
+    "sourceBuildTypeId": "Javacord_Bot_Publish",
+    "key": "BuildDuration"
+  }
+]]]></param>
+        <param name="seriesTitle" value="Serie" />
+        <param name="title" value="Build Duration" />
+      </parameters>
+    </extension>
+  </project-extensions>
+  <cleanup />
+  <buildTypesOrder order="Javacord_Bot_UpdateCommitStatus,Javacord_Bot_Publish" />
+</project>
+
