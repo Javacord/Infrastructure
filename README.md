@@ -1,5 +1,5 @@
 # TeamCity-Configuration
-Javacord's configuations for the TeamCity build server
+Javacord's configurations for the TeamCity build server
 
 ## Contents
 
@@ -52,4 +52,14 @@ A `Dockerfile` for building the TeamCity agent images tailored to our needs.
 docker build --build-arg i=1 -t teamcity-agent-1 teamcity-agent/ && \
 docker build --build-arg i=2 -t teamcity-agent-2 teamcity-agent/ && \
 docker build --build-arg i=3 -t teamcity-agent-3 teamcity-agent/
+```
+
+### `javacord-bot-build`
+
+A `Dockerfile` for building the image in which the actual Javacord Bot build is running.
+
+#### Build the image
+
+```shell
+docker build -t javacord-bot-build javacord-bot-build/
 ```

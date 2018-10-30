@@ -1,0 +1,8 @@
+gradle.settingsEvaluated {
+    it.buildCache {
+        remote(HttpBuildCache) {
+            url = 'http://gradle-build-cache:5071/cache/'
+            push = true
+        }
+    }
+}
