@@ -46,6 +46,13 @@
       <extension id="perfmon" type="perfmon">
         <parameters />
       </extension>
+      <extension id="BUILD_EXT_2" type="xml-report-plugin">
+        <parameters>
+          <param name="xmlReportParsing.reportDirs" value="build/reports/checkstyle/*.xml"/>
+          <param name="xmlReportParsing.reportType" value="checkstyle"/>
+          <param name="xmlReportParsing.verboseOutput" value="true"/>
+        </parameters>
+      </extension>
     </build-extensions>
     <cleanup />
   </settings>
