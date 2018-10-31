@@ -18,7 +18,6 @@
     <cleanup>
       <policy type="builds" cleanup-level="ARTIFACTS">
         <parameters>
-          <param name="artifactPatterns" value="+:**/*.jar" />
           <param name="keepBuilds.count" value="2000" />
         </parameters>
       </policy>
