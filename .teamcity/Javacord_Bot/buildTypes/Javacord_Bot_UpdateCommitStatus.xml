@@ -37,7 +37,6 @@
     <cleanup>
       <policy type="days" cleanup-level="ARTIFACTS">
         <parameters>
-          <param name="artifactPatterns" value="+:**/*.jar" />
           <param name="keepDays.count" value="7" />
         </parameters>
       </policy>
