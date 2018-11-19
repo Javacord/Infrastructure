@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/2018.1/project-config.xsd">
-  <name>Build</name>
+  <name>Publish</name>
   <description />
   <settings ref="Javacord_Bot_template_BuildJavacordBot">
-    <parameters />
+    <parameters>
+      <param name="additional.docker.parameters" value="--mount type=bind,source=$SSH_AUTH_SOCK,destination=$SSH_AUTH_SOCK,ro --mount type=bind,source=%sshTunnel.Javacord_Bot_Docker.local.socket%,destination=/var/run/docker.sock" />
+      <param name="additional.gradle.tasks" value="updateDockerService" />
+    </parameters>
     <build-runners />
     <vcs-settings />
     <requirements />
@@ -15,6 +18,26 @@
         </parameters>
       </build-trigger>
     </build-triggers>
+    <build-extensions>
+      <extension id="ssh-agent-build-feature" type="ssh-agent-build-feature">
+        <parameters>
+          <param name="teamcitySshKey" value="javacord_bot_deploy_key" />
+        </parameters>
+      </extension>
+      <extension id="ssh-tunnel-build-feature" type="ssh-tunnel-build-feature">
+        <parameters>
+          <param name="host" value="159.69.82.177" />
+          <param name="localPart" value="SOCKET" />
+          <param name="localSocket" value="/opt/buildagent%env.INDEX%/temp/buildTmp/javacord-bot-docker.sock" />
+          <param name="name" value="Javacord Bot Docker" />
+          <param name="remotePart" value="SOCKET" />
+          <param name="remoteSocket" value="/var/run/docker.sock" />
+          <param name="sshTunnelRequirement" value="%ssh.executable%" />
+          <param name="teamcitySshKey" value="javacord_bot_deploy_key" />
+          <param name="user" value="teamcity" />
+        </parameters>
+      </extension>
+    </build-extensions>
     <cleanup>
       <policy type="builds" cleanup-level="ARTIFACTS">
         <parameters>
