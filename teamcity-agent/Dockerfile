@@ -55,3 +55,6 @@ RUN install -d -m 0755 -o teamcity -g teamcity /opt/buildagent${i}/conf/ && \
 VOLUME /opt/buildagent${i}
 
 USER teamcity
+
+# Add javacord-bot server to known hosts file
+RUN ssh -o StrictHostKeyChecking=no -o RequestTTY=no teamcity@159.69.82.177 || true
