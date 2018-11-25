@@ -46,6 +46,7 @@ CMD ["/run-agent.sh"]
 
 # replace the build agent directory by a unique one to be able to properly use the docker wrapper with the outer daemon
 ARG i
+ENV INDEX=${i}
 LABEL teamcity.agent.index=${i}
 COPY --from=teamcity-minimal-agent --chown=teamcity:teamcity /opt/buildagent/ /opt/buildagent${i}/
 RUN install -d -m 0755 -o teamcity -g teamcity /opt/buildagent${i}/conf/ && \
