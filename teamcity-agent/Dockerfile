@@ -2,10 +2,6 @@ FROM jetbrains/teamcity-minimal-agent:latest AS teamcity-minimal-agent
 
 FROM debian:stable-slim
 
-COPY --from=teamcity-minimal-agent /run-agent.sh /
-
-COPY run-agent.sh.patch /
-
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     # add packages needed to build the image
@@ -36,9 +32,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     useradd --no-log-init --shell /bin/false --create-home -g teamcity -u 1001 teamcity && \
     # give the user docker control rights
     adduser teamcity docker && \
-    # patch the run-agent.sh for proper graceful shutdown
-    patch <run-agent.sh.patch && \
-    rm -v run-agent.sh.patch && \
     # clean up after apt-get
     apt-get purge -y \
         dirmngr \
@@ -48,6 +41,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get autoremove --purge -y && \
     rm -rv /var/lib/apt/lists/*
 
+COPY --from=teamcity-minimal-agent /run-agent.sh /
 CMD ["/run-agent.sh"]
 
 # replace the build agent directory by a unique one to be able to properly use the docker wrapper with the outer daemon
