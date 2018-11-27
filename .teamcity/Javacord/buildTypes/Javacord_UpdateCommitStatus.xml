@@ -4,7 +4,7 @@
   <description />
   <settings ref="Javacord_template_BuildJavacord">
     <options>
-      <option name="executionTimeoutMin" value="15" />
+      <option name="executionTimeoutMin" value="30" />
     </options>
     <parameters>
       <param name="additional.artifact.patterns" value="-:**/*" />
