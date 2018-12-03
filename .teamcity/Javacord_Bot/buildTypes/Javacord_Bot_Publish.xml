@@ -19,11 +19,6 @@
       </build-trigger>
     </build-triggers>
     <build-extensions>
-      <extension id="ssh-agent-build-feature" type="ssh-agent-build-feature">
-        <parameters>
-          <param name="teamcitySshKey" value="javacord_bot_deploy_key" />
-        </parameters>
-      </extension>
       <extension id="ssh-tunnel-build-feature" type="ssh-tunnel-build-feature">
         <parameters>
           <param name="host" value="159.69.82.177" />
