@@ -4,7 +4,7 @@
   <description />
   <settings ref="Javacord_Bot_template_BuildJavacordBot">
     <parameters>
-      <param name="additional.docker.parameters" value="--mount type=bind,source=$SSH_AUTH_SOCK,destination=$SSH_AUTH_SOCK,ro --mount type=bind,source=%sshTunnel.Javacord_Bot_Docker.local.socket%,destination=/var/run/docker.sock" />
+      <param name="additional.docker.parameters" value="--mount type=bind,source=%sshTunnel.Javacord_Bot_Docker.local.socket%,destination=/var/run/docker.sock" />
       <param name="additional.gradle.tasks" value="updateDockerService" />
     </parameters>
     <build-runners />
