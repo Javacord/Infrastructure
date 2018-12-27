@@ -20,7 +20,7 @@
     </extension>
     <extension id="PROJECT_EXT_11" type="CloudImage">
       <parameters>
-        <param name="agent_pool_id" value="0" />
+        <param name="agent_pool_id" value="1" />
         <param name="profileId" value="VRDC-1" />
         <param name="source-id" value="Javacord_TeamCity_Agent_3" />
       </parameters>
