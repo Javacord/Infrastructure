@@ -1,5 +1,6 @@
-# TeamCity-Configuration
-Javacord's configurations for the TeamCity build server
+# Javacord Infrastructure
+
+The configuration for Javacord's infrastructure.
 
 ## Contents
 
