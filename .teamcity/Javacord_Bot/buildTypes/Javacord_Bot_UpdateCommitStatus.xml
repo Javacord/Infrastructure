@@ -30,7 +30,7 @@
           <param name="github_authentication_type" value="token" />
           <param name="github_host" value="https://api.github.com" />
           <param name="publisherId" value="githubStatusPublisher" />
-          <param name="secure:github_access_token" value="credentialsJSON:6a02f2e0-20e0-40dd-9ef7-afbb5fe8c8ea" />
+          <param name="secure:github_access_token" value="credentialsJSON:c77402a3-dfef-4aab-a866-7d97cc00b357" />
         </parameters>
       </extension>
     </build-extensions>
