@@ -2,19 +2,11 @@ FROM debian:stable-slim
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get install -y --no-install-recommends lsb-release && \
-    echo "deb http://deb.debian.org/debian $(lsb_release -cs)-backports main" \
-        >>/etc/apt/sources.list.d/backports.list && \
-    apt-get update && \
-    mkdir /usr/share/man/man1 && \
-    apt-get install -y --no-install-recommends openjdk-9-jdk-headless && \
-    rm -v /etc/apt/sources.list.d/backports.list && \
-    apt-get update && \
     apt-get install -y --no-install-recommends \
+        openjdk-11-jdk-headless \
         git \
         gpg \
         openssh-client && \
-    apt-get purge -y lsb-release && \
     apt-get autoremove --purge -y && \
     rm -rv /var/lib/apt/lists/*
 
