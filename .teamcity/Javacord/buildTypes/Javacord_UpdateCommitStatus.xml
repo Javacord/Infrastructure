@@ -6,9 +6,6 @@
     <options>
       <option name="executionTimeoutMin" value="30" />
     </options>
-    <disabled-settings>
-      <setting-ref ref="BUILD_EXT_2" />
-    </disabled-settings>
     <parameters>
       <param name="additional.artifact.patterns" value="-:**/*" />
       <param name="additional.gradle.parameters" value="--continue" />
