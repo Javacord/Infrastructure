@@ -57,4 +57,4 @@ VOLUME /opt/buildagent${i}
 USER teamcity
 
 # Add javacord-bot server to known hosts file
-RUN ssh -o StrictHostKeyChecking=no -o RequestTTY=no teamcity@159.69.82.177 || true
+RUN ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o RequestTTY=no teamcity@159.69.82.177 || true

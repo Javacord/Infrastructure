@@ -29,4 +29,4 @@ VOLUME /home/teamcity/.gradle/init.d/
 USER teamcity
 
 # Add github.com to known hosts file
-RUN ssh -o StrictHostKeyChecking=no -o RequestTTY=no git@github.com || true
+RUN ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o RequestTTY=no git@github.com || true
