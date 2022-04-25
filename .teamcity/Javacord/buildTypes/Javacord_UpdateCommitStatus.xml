@@ -6,6 +6,9 @@
     <options>
       <option name="executionTimeoutMin" value="30" />
     </options>
+    <disabled-settings>
+      <setting-ref ref="vcsTrigger" />
+    </disabled-settings>
     <parameters>
       <param name="additional.artifact.patterns" value="-:**/*" />
       <param name="additional.gradle.parameters" value="--continue" />
