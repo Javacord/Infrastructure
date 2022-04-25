@@ -3,6 +3,9 @@
   <name>Publish Snapshots</name>
   <description />
   <settings ref="Javacord_template_BuildJavacord">
+    <disabled-settings>
+      <setting-ref ref="vcsTrigger" />
+    </disabled-settings>
     <parameters>
       <param name="additional.docker.parameters" value="--mount type=bind,source=/home/teamcity/signing_secring.gpg,destination=/home/teamcity/signing_secring.gpg,ro" />
       <param name="additional.gradle.parameters"><![CDATA[--continue
